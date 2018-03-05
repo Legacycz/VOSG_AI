@@ -83,6 +83,9 @@ public class EnemyAI : MonoBehaviour {
 
     void UpdateChasing()
     {
+        thisAgent.destination = 
+            WaypointManager.Instance.player.position;
+
         if (Vector3.Distance(transform.position,
             WaypointManager.Instance.player.position) < 3)
         {
@@ -95,6 +98,7 @@ public class EnemyAI : MonoBehaviour {
         {
             print("Changing state to PATROLLING");
             currentState = AIState.PATROLLING;
+            thisAgent.destination = currentTarget.position;
         }
     }
 
